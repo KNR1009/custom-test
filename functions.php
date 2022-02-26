@@ -8,8 +8,8 @@
  * @package custom-test
  */
 
-// カスタム投稿タイプ
 add_action("init", function () {
+	// カスタム投稿
 	register_post_type("item", [
 		"label" => "商品",
 		"public" => true,
@@ -17,6 +17,12 @@ add_action("init", function () {
 		"menu_icon" => "dashicons-store",
 		"supports" => ["thumbnail", "title", "editor", "page-attributes"],
 		"has_archive" => true,
+		'hierarchical' => true,
+		"show_in_rest" => true,
+	]);
+	// タクソノミー
+	register_taxonomy("genre", "item", [
+		"label" => "商品ジャンル",
 		'hierarchical' => true,
 		"show_in_rest" => true,
 	]);
