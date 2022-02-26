@@ -26,6 +26,24 @@ add_action("init", function () {
 		'hierarchical' => true,
 		"show_in_rest" => true,
 	]);
+
+	// カスタム投稿タイプ教材
+	register_post_type("food", [
+		"label" => "食べ物",
+		"public" => true,
+		"menu_position" => 5,
+		"menu_icon" => "dashicons-store",
+		"supports" => ["thumbnail", "title", "editor", "page-attributes"],
+		"has_archive" => true,
+		'hierarchical' => true,
+	]);
+
+	// タクソノミー
+	register_taxonomy("kind", "food", [
+		"label" => "食べ物の種類",
+		'hierarchical' => true,
+		"show_in_rest" => true,
+	]);
 });
 
 if (!defined('_S_VERSION')) {
