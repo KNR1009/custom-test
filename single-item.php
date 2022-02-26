@@ -18,6 +18,18 @@ get_header();
     the_post();
   ?>
     <h1>商品詳細</h1>
+    <?php $terms = get_the_terms($get_the_id, "genre");
+    ?>
+
+    <!-- タクソノミーが選択されていた場合のみ表示 -->
+    <?php if ($terms) : ?>
+      <ul>
+        <?php foreach ($terms as $term) : ?>
+          <li><a href="<?php echo get_term_link($term) ?>"><?php echo esc_html($term->name) ?></a></li>
+        <? endforeach; ?>
+      </ul>
+    <?php endif; ?>
+
   <?php
 
     get_template_part('template-parts/content', get_post_type());
