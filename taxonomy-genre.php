@@ -21,6 +21,12 @@ get_header();
       the_archive_description('<div class="archive-description">', '</div>');
       ?>
       <h2><?php the_archive_title() ?></h2>
+      <?php $terms = get_terms("genre"); ?>
+      <ul class="nav">
+        <?php foreach ($terms as $term) : ?>
+          <li class="nav-item"><a class="nav-link" href="<?php echo get_term_link($term); ?>"><?php echo esc_html($term->name) ?></a></li>
+        <?php endforeach ?>
+      </ul>
     </header><!-- .page-header -->
     <ul>
       <?php
