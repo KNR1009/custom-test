@@ -11,24 +11,24 @@
 get_header();
 ?>
 
-<!-- singleは記事の詳細ページ -->
 <main id="primary" class="site-main col-md-8">
   <?php
   while (have_posts()) :
     the_post();
   ?>
-    <!-- タクソノミー情報を取得 -->
-    <?php $terms = get_the_terms($get_the_id, "kind");
-    ?>
-    <ul>
-      <?php foreach ($terms as $term) : ?>
+    <p>商品詳細</p>
+    <?php $terms = get_the_terms(get_the_ID(), "book-genre") ?>
+    <?php if ($terms) : ?>
+      <ul>
+        <?php foreach ($terms as $term) : ?>
+          <li><a href="<?php echo get_term_link($term) ?>"><?php echo esc_html($term->name) ?></a></li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
 
-        <li><a href="<?php echo get_term_link($term) ?>"><?php echo esc_html($term->name) ?></a></li>
-      <? endforeach ?>
-    </ul>
-    <!-- タクソノミー情報を取得 -->
+
   <?php
-    // カスタム投稿の一覧を表示
+
     get_template_part('template-parts/content', get_post_type());
 
     the_post_navigation(

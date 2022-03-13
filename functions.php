@@ -9,6 +9,21 @@
  */
 
 add_action("init", function () {
+	// カスタム投稿の「書籍」
+	register_post_type("book", [
+		"label" => "書籍",
+		"public" => true,
+		"menu_position" => 5,
+		"supports" => ["thumbnail", "title", "editor", "page-attributes"],
+		"has_archive" => true,
+		"hierarchical" => true
+	]);
+
+	// タクソノミー
+	register_taxonomy("book-genre", "book", [
+		"label" => "書籍ジャンル",
+		'hierarchical' => true
+	]);
 	// カスタム投稿
 	register_post_type("item", [
 		"label" => "商品",
