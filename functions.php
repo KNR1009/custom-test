@@ -14,7 +14,7 @@ add_action("init", function () {
 		"label" => "書籍",
 		"public" => true,
 		"menu_position" => 5,
-		"supports" => ["thumbnail", "title", "editor", "page-attributes"],
+		"supports" => ["thumbnail", "title", "editor", "page-attributes", "custom-fields"],
 		"has_archive" => true,
 		"hierarchical" => true
 	]);
