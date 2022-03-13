@@ -1,10 +1,11 @@
 <p>書籍名: <?php the_title() ?></p>
 <!-- 以下にカスタムフィールドで定義したデータを入れ込む -->
 <?php
-$price = get_post_meta(get_the_ID(), "価格", true);
-$publisher = get_post_meta(get_the_ID(), "出版社", true);
-$authors = get_post_meta(get_the_ID(), "著者", false);
+$price = get_post_meta(get_the_ID(), "price", true);
+$publisher = get_post_meta(get_the_ID(), "publisher", true);
+$authors = get_post_meta(get_the_ID(), "author", false);
 ?>
+<p><?php echo var_dump($authors) ?></p>
 <dl>
   <?php if ($price) : ?>
     <dt>価格</dt>

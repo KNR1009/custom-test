@@ -8,6 +8,22 @@
  * @package custom-test
  */
 
+add_shortcode("date", function () {
+	return date("Y年 m月 j日");
+});
+
+add_shortcode("sum", function ($atts) {
+	$atts = shortcode_atts(
+		[
+			"x" => 0,
+			"y" => 0
+		],
+		$atts,
+		"sum"
+	);
+	return $atts["x"] + $atts["y"];
+});
+
 add_action("init", function () {
 	// カスタム投稿の「書籍」
 	register_post_type("book", [
